@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>接口查询页</title>
+<!--IE 兼容模式-->
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<!--移动设备优先-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--为了增强跨浏览器表现的一致性,维护的一个CSS 重置样式库-->
+<link rel="stylesheet" type="text/css" href="css/normalize.css">
+<!-- Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<!-- 表格样式 -->
+<link rel="stylesheet" type="text/css" href="css/bootstrap-table.min.css">
+<!-- 联想输入样式 -->
+<link rel="stylesheet" type="text/css"  ref="css/autosuggest.css">
+<!-- 表单验证 -->
+<link rel="stylesheet" type="text/css" href="css/bootstrapValidator.css">
+
+</head>
+<body>
+
+	<!-- 查询表单开始 -->
+
+	<div style="margin-top: 100px;" class="form-inline ">
+
+		<div class="col-xs-5"></div>
+		<div class="form-group">
+			<label class="sr-only">关键字</label> 
+			<input style="width: 300px;" class="form-control" type="text" name="search-keyword"
+				id="search-keyword" placeholder="请输入关键字" />
+		</div>
+		<button type="button" style="margin-left:50px;" class="btn btn-default" id="btn-search">查询</button>
+	</div>
+
+	<!-- 查询表单结束 -->
+
+
+	<div id="toolbar" class="btn-group">
+		<button id="btn_add" type="button" class="btn btn-default">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+		</button>
+
+		<button id="btn_delete" type="button" class="btn btn-default">
+			<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
+		</button>
+	</div>
+	<!--数据表格开始-->
+	<div class="table-responsive">
+		<table class="table table-bordered table-hover" id="InterfaceTable">
+		</table>
+	</div>
+
+
+	<!--修改信息的模态框-->
+	<div class="modal fade" id="confirm-modify" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">修改数据信息</div>
+				<div class="modal-body">
+
+					<form id="modifyDataForm" class="form-horizontal">
+						<div class="form-group hidden">
+							<label class="col-lg-3 control-label">id</label>
+							<div class="col-lg-5 ">
+								<input type="text" id="data-id" class="form-control"
+									name="data-id" readonly />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-lg-3 control-label">关键字</label>
+							<div class="col-lg-5 ">
+								<input type="text" class="form-control " name="keyword"
+									id="keyword" required="required" />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-lg-3 control-label">描述</label>
+							<div class="col-lg-5 ">
+								<textarea rows="3" cols="20" class="form-control"
+									id="description" name="description">
+							</textarea>
+							</div>
+						</div>
+
+
+						<div class="form-group">
+							<label class="col-lg-3 control-label">URL</label>
+							<div class="col-lg-5 ">
+								<input type="text" class="form-control" id="URL" name="URL" />
+								<input type="hidden" id="index" name="index" />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-lg-3 control-label">参数</label>
+							<div class="col-lg-5 ">
+								<input type="text" class="form-control " name="paras" id="paras"
+									required="required" />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-lg-3 control-label">备注</label>
+							<div class="col-lg-5 ">
+								<input type="text" class="form-control " name="remark"
+									id="remark" required="required" />
+							</div>
+						</div>
+
+
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					<button type="button" class="btn btn-danger btn-ok" id="btn-modify">确认修改</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--修改信息的模态框结束-->
+
+
+
+	<!--添加信息的模态框-->
+	<div class="modal fade" id="confirm-add" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">添加数据信息</div>
+				<div class="modal-body">
+
+					<form id="addDataForm" class="form-horizontal">
+						<!--  
+						<div class="form-group">
+							<label class="col-lg-3 control-label">id</label>
+							<div class="col-lg-5 ">
+								<input type="text" id="addDataId" class="form-control" name="addDataId" />
+							</div>
+						</div>
+                    -->
+						<div class="form-group">
+							<label class="col-lg-3 control-label">关键字</label>
+							<div class="col-lg-5 ">
+								<input type="text" class="form-control " name="addKeyword"
+									id="addKeyword" required="required" />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-lg-3 control-label">描述</label>
+							<div class="col-lg-5 ">
+								<textarea rows="3" cols="20" class="form-control"
+									id="addDescription" name="addDescription">
+							</textarea>
+
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-lg-3 control-label">URL</label>
+							<div class="col-lg-5 ">
+								<input type="text" class="form-control" id="addURL" name="addURL"
+									placeholder="请输入接口地址" />
+							</div>
+						</div>
+
+
+						<div class="form-group">
+							<label class="col-lg-3 control-label">参数</label>
+							<div class="col-lg-5 ">
+								<input type="text" class="form-control" id="addParas"
+									name="addParas" />
+							</div>
+						</div>
+
+
+						<div class="form-group">
+							<label class="col-lg-3 control-label">备注</label>
+							<div class="col-lg-5 ">
+								<input type="text" class="form-control" id="addRemark"
+									name="addRemark" />
+							</div>
+						</div>
+
+
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					<button type="button" class="btn btn-danger btn-ok"
+						id="btn-confirm-add">确认添加</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--添加信息的模态框结束-->
+
+	<!-- 确认单个删除框 -->
+
+	<!-- 信息删除确认 -->
+	<div class="modal fade" id="deleteOneModel">
+		<div class="modal-dialog">
+			<div class="modal-content message_align">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<h4 class="modal-title">提示信息</h4>
+				</div>
+				<div class="modal-body">
+					<p>您确认要删除吗？</p>
+					<input type="hidden" id="deleteId" name="deleteId">
+				</div>
+				<div class="modal-footer">
+					<input type="hidden" id="url" />
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					<button id="deleteOne" class="btn btn-success" data-dismiss="modal">确定</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+	<!-- 结束 -->
+	
+	
+	
+	
+	<!-- 确认单个删除框 -->
+
+	<!-- 信息删除确认 -->
+	<div class="modal fade" id="deleteSomeModel">
+		<div class="modal-dialog">
+			<div class="modal-content message_align">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<h4 class="modal-title">提示信息</h4>
+				</div>
+				<div class="modal-body">
+					<p>您确认要删除吗？</p>
+					<input type="hidden" id="deleteId" name="deleteId">
+				</div>
+				<div class="modal-footer">
+					<input type="hidden" id="url" />
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					<button id="deleteSome" class="btn btn-success" data-dismiss="modal">确定</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+	<!-- 结束 -->
+
+
+
+	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+	<script type="text/javascript" src="js/jquery.min-1.11.0.js"></script>
+	<!-- Bootstrap 核心 JavaScript 文件 -->
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/jquery.form.js"></script>
+	<!--表格需要的js-->
+	<script type="text/javascript" src="js/bootstrap-table.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap-table-zh-CN.min.js"></script>
+	<!--联想输入需要的js-->
+	<script type="text/javascript" src="js/autosuggest.js"></script>
+	<!-- 表单验证 -->
+	<script type="text/javascript" src="js/bootstrapValidator.js"></script>
+	<script type="text/javascript" src="js/zh_CN.js"></script>
+
+
+
+
+
+	<script>
+		$(function() {
+			
+			
+			$("#search-keyword").autosuggest({
+	            url: 'interfaceList/autoComplete',
+	            minLength: 1,
+	            maxNum: 3,
+	            align: 'center',
+	            method: 'post',
+	            highlight: true,
+	            immediate: true,
+	            queryParamName: 'keyword',
+	            nextStep: function (ele) {
+//	                alert("hello world!");
+	                //alert(ele.data('value'));
+	            },
+	            split: ' ',
+	            open: function(){
+	                console.log("start open");
+	            },
+	            close: function(){
+	                console.log("start close");
+	            },
+	            dataCallback:function(data){
+	            	var obj = eval('(' + data + ')');;
+	            	return obj;
+	            	
+	            }
+	        });
+			
+			
+			var objs = new Array();
+			$.ajax({
+				url : 'interfaceList/getAll',
+				type : 'get',
+				contentType : 'application/json',
+				dataType : "json",
+				async : false,
+				success : function(data) {
+					var obj = eval(data);
+					for (var i = 0; i < obj.length; i++) {
+						objs.push(obj[i]);
+					}
+				}
+			});
+
+			$('#InterfaceTable')
+					.bootstrapTable(
+							{
+								striped : true, //是否显示行间隔色
+								cache : false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+								toolbar : '#toolbar', //工具按钮用哪个容器
+								pagination : true, //是否显示分页（*）                    
+								pageSize : 10, //每页的记录行数（*）
+								pageList : [ 10, 20, 40, 60 ], //可供选择的每页的行数（*）        
+								// height: 460,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度       
+								fixedColumns : true,
+								fixedNumber : 3,
+								columns : [
+										{
+											checkbox : true
+										},
+										{
+											field : 'id',
+											title : 'ID'
+										},
+										{
+											field : 'keyword',
+											title : '关键字'
+										},
+										{
+											field : 'description',
+											title : '描述'
+										},
+										{
+											field : 'URL',
+											title : 'URL'
+										},
+										{
+											field : 'paras',
+											title : '参数'
+										},
+										{
+											field : 'remark',
+											title : '备注'
+										},
+										{
+											field : 'handle',
+											title : '操作',
+											formatter : function(value, row,
+													index) {
+												var s = '<button  type="button" class="modify btn btn-xs"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改</button>';
+												//var v = '<button type="button" class="delete btn btn-xs"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除</button>';
+												//return s + ' ' + v;
+												return s;
+											},
+											events : 'operateEvents'
+										} ],
+								data : objs
+							});
+
+		});
+
+		window.operateEvents = {
+			'click .modify' : function(e, value, row, index) {			
+				$('#data-id').val(row.id);
+				$('#keyword').val(row.keyword);
+				$('#description').val(row.description);
+				$('#URL').val(row.URL);
+				$('#paras').val(row.paras);
+				$('#remark').val(row.remark);
+				$('#index').val(index);
+				$('#confirm-modify').modal({backdrop: 'static'});
+			}
+		/*
+		,
+			'click .delete' : function(e, value, row, index) {				
+				//$('#deleteOneModel').modal({backdrop: 'static'});
+				//$("#deleteId").val(row.id);
+				
+				$.ajax({
+					url : 'interfaceList/deleteOne/'+row.id,
+					type : 'get',
+					contentType : 'application/json',
+					dataType : "json",
+					async : false,
+					success : function(data) {
+						if(data=="success"){
+							alert("成功删除");
+							$('#InterfaceTable').bootstrapTable('remove', {
+		                    	field: 'id',
+		                    	values: [row.id]
+		                });
+						}
+						else{
+							alert("删除失败，请重试!");
+						}
+					}
+				});
+			}
+		
+		*/
+		};
+        //添加一个数据
+		$('#btn_add').click(function() {
+			$('#confirm-add').modal({backdrop: 'static'});	
+			formValidator();
+		});
+        //确认修改一条数据
+		$('#btn-modify').click(function(){
+			$('#confirm-modify').modal('hide');
+			modifyData();		
+		});
+        
+        
+		//清除弹窗原数据
+		$("#confirm-add").on("hidden.bs.modal", function() {
+			$("#addDataForm").data('bootstrapValidator').destroy();
+		    $('#addDataForm').data('bootstrapValidator', null);
+			$('#addKeyword').val("");
+			$('#addURL').val("");
+			$('#addDescription').val("");
+			$('#addParas').val("");
+			$('#addRemark').val("");
+			
+		});
+		$("#confirm-modify").on("hidden.bs.modal", function() {
+			$('#data-id').val("");
+			$('#keyword').val("");
+			$('#description').val("");
+			$('#URL').val("");
+			$('#paras').val("");
+			$('#remark').val("");
+			$('#index').val("");
+		});
+		
+		function modifyData(){
+			$('#modifyDataForm').ajaxSubmit({
+				type : 'post',
+				url : "interfaceList/modifyOne",				
+				dataType : "json",				
+				success : function(data) {
+					if(data=="success"){
+						alert("修改成功");
+						$('#InterfaceTable').bootstrapTable('updateRow', {
+	                    	index: $("#index").val(),
+	                    	row: {
+	                    		id:$('#data-id').val(),keyword:$('#keyword').val(),description:$('#description').val(),URL:$('#URL').val(),paras:$('#paras').val(),remark:$('#remark').val()
+	                    	}
+	                  });
+					}else{
+						alert("修改失败，请重试!");
+					}
+					
+					
+					//reloadTable();
+				}
+			});
+		}
+		//确认添加一条记录
+		$('#btn-confirm-add').click(function(){
+			
+			/*手动验证表单，当是普通按钮时。*/
+			 $('#addDataForm').data('bootstrapValidator').validate();
+			 if(!$('#addDataForm').data('bootstrapValidator').isValid()){
+			 	return ;
+			 } 
+			 $('#confirm-add').modal('hide');
+			$('#addDataForm').ajaxSubmit({
+				type : 'post',
+				url : "interfaceList/addOne",
+				dataType : "json",
+				
+				success : function(data) {
+					var obj = eval('(' + data + ')');;
+					if(obj.result=="success"){
+						alert("添加成功");
+						$('#InterfaceTable').bootstrapTable('insertRow', {
+	                    	index: 0,
+	                    	row: {
+	                    		id:obj.id,keyword:$('#addKeyword').val(),description:$('#addDescription').val(),URL:$('#addURL').val(),paras:$('#addParas').val(),remark:$('#addRemark').val()
+	                    	}
+	                  });
+					}else{
+						alert("添加失败，请重试!");
+					}
+					
+					//reloadTable();
+				}
+			});	
+		});
+		//点击查询按钮之后
+		$("#btn-search").click(function(){
+			var objs= new Array();
+			var name=$("#search-keyword").val();
+			$.ajax({
+				url : 'interfaceList/selectSome/'+name,
+				type : 'post',
+				contentType : 'application/json',
+				dataType : "json",
+				async : false,
+				success : function(data) {
+					var obj = eval(data);
+					for (var i = 0; i < obj.length; i++) {
+						objs.push(obj[i]);
+					}
+				}
+			});
+			$('#InterfaceTable').bootstrapTable('load',objs);				
+		});
+		//点击左上方删除按钮以后
+		$("#btn_delete").click(function(){
+			$('#deleteSomeModel').modal({backdrop: 'static'});
+			/*
+			var data=$('#InterfaceTable').bootstrapTable('getSelections');
+			if(data.length==0){
+				alert("请选中某些数据");
+			}
+			else{
+				var objs= new Array();
+				for(var i=0;i<data.length;i++){
+					objs.push(data[i].id);
+				}
+				var ids=objs.join("-");
+				//alert(ids);
+				$.ajax({
+					url  : 'interfaceList/deleteSomeByID',
+					type : 'get',
+					data : {"ids":ids},
+					contentType : 'application/json',
+					dataType : "json",
+					async : false,
+					success : function(data) {
+						if(data=="success"){
+							alert("删除成功");
+							$('#InterfaceTable').bootstrapTable('remove', {
+		                    	field: 'id',
+		                    	values: objs
+		                });	
+						}else{
+							alert("删除失败，请重试!");
+						}
+											
+					}
+				});
+			}
+			*/
+		});
+		$("#deleteSome").click(function(){			
+	           $('#deleteSomeModel').modal('hide');
+	           
+	           var data=$('#InterfaceTable').bootstrapTable('getSelections');
+				if(data.length==0){
+					alert("请选中某些数据");
+				}
+				else{
+					var objs= new Array();
+					for(var i=0;i<data.length;i++){
+						objs.push(data[i].id);
+					}
+					var ids=objs.join("-");
+					//alert(ids);
+					$.ajax({
+						url  : 'interfaceList/deleteSomeByID',
+						type : 'get',
+						data : {"ids":ids},
+						contentType : 'application/json',
+						dataType : "json",
+						async : false,
+						success : function(data) {
+							if(data=="success"){
+								alert("删除成功");
+								$('#InterfaceTable').bootstrapTable('remove', {
+			                    	field: 'id',
+			                    	values: objs
+			                });	
+							}else{
+								alert("删除失败，请重试!");
+							}
+												
+						}
+					});
+				}
+				
+				
+			});
+		//表单验证
+		function formValidator() {
+			$("#addDataForm").bootstrapValidator({
+				message : 'This value is not valid',
+				feedbackIcons : {
+					valid : 'glyphicon glyphicon-ok',
+					invalid : 'glyphicon glyphicon-remove',
+					validating : 'glyphicon glyphicon-refresh'
+				},
+				fields : {
+					addURL: {
+						message: '验证不通过',
+						validators : {
+							notEmpty : {
+								message : '必填项'
+							}
+						}
+					}
+				}
+			});
+		}		
+		$("#deleteOne").click(function(){			
+           $('#deleteOneModel').modal('hide');			
+			var deleteId=$("#deleteId").val();
+			alert(deleteId);
+			
+			$.ajax({
+				url : 'interfaceList/deleteOne/'+deleteId,
+				type : 'get',
+				contentType : 'application/json',
+				dataType : "json",
+				async : false,
+				success : function(data) {
+					if(data=="success"){						
+						$('#InterfaceTable').bootstrapTable('remove', {
+	                    	field: 'id',
+	                    	values: [deleteId]
+	                });
+						alert("成功删除");
+					}
+					else{
+						alert("删除失败，请重试!");
+					}
+				}
+			});
+			
+		});
+			
+			
+		
+		
+	</script>
+</body>
+</html>

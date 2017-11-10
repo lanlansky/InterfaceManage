@@ -1,0 +1,934 @@
+body, html { 
+		height: 100%; 
+		width:100%;
+		margin:0 auto;
+		padding:0;
+	}
+	body{
+		display: block;
+	}
+	.header{
+		width:100%;
+		height:15%;
+		position: relative
+	}
+	.header-top{
+		position: absolute;
+		top:23%;
+		left:10%;
+	}
+	.header-bottom{
+		position: absolute;
+		top:75%;
+		left:37%;
+	}
+	.p1{
+		font-family: "方正报宋_GBK";
+		font-size: 1.8em;
+	}
+	.p2{
+		font-family: "Microsoft YaHei";
+		font-size: 18px;
+	}
+	.c1{
+		font-family: "Microsoft YaHei";
+		font-size:11px;
+	}
+	.c2{
+		font-family:Arial;
+		font-size:11px;
+	}
+	.con{
+		width:100%;
+		height:73%;
+		background: url("../images/bg.png");
+		background-size:100% 73%;
+		background-repeat:no-repeat round;
+		background-origin: content-box;
+	}
+	#loginForm{
+		width:100%;
+	}
+	.footer{
+		text-align: center;
+		margin-top:20px;
+	}	
+	.footer span{
+		font-family: "Microsoft YaHei";
+		font-size: 1em;
+	}
+	.pic{
+		position:relative;
+		top:4%;
+		left:25%;
+		float: left;
+	}
+	.login{
+		width:15%;
+		height:60%;
+		position:relative;
+		top:13%;
+		left:57%;
+		background: #fff;
+		padding: 1em 1.7em 2em 1.7em;
+		border-radius: 0.2em;
+		-webkit-border-radius: 0.2em;
+		-o-border-radius: 0.2em;
+		-moz-border-radius: 0.2em;
+		box-shadow: 2px 2px 2px #191970;
+		overflow: hidden;
+	}
+	.textbox{
+		background:url("../images/user.png") no-repeat 5px center;
+		padding: 7px 0px 7px 25px;
+		width: 86%;
+		font-size: 0.6em;
+		margin: 11px 0px;
+		border: 1px solid #666666;
+		color: #666666;
+		font-family: 'Open Sans', sans-serif;
+		font-weight:300;
+		outline:none;
+		border-radius: 0.2em;
+		-webkit-border-radius: 0.2em;
+		-o-border-radius: 0.2em;
+		-moz-border-radius: 0.2em;
+		-webkit-transition: all 0.3s ease-out;
+		-moz-transition: all 0.3s ease-out;
+		-ms-transition: all 0.3s ease-out;
+		-o-transition: all 0.3s ease-out;
+		transition: all 0.3s ease-out;
+	}
+	.password {
+		background:url("../images/password.png") no-repeat 5px center;
+		padding: 7px 0px 7px 25px;
+		width: 86%;
+		font-size: 0.6em;
+		margin: 11px 0px;
+		border: 1px solid #666666;
+		color: #666666;
+		font-family: 'Open Sans', sans-serif;
+		font-weight:300;
+		outline:none;
+		border-radius: 0.2em;
+		-webkit-border-radius: 0.2em;
+		-o-border-radius: 0.2em;
+		-moz-border-radius: 0.2em;
+		-webkit-transition: all 0.3s ease-out;
+		-moz-transition: all 0.3s ease-out;
+		-ms-transition: all 0.3s ease-out;
+		-o-transition: all 0.3s ease-out;
+		transition: all 0.3s ease-out;
+	}
+	.textbox:hover{
+		background:url("../images/user.png") no-repeat 5px center;
+		border:1px solid #609EC3;
+		outline:none;
+	}
+	.password:hover{
+		background:url("../images/password.png") no-repeat 5px center;
+		border:1px solid #609EC3;
+		outline:none;
+	}	
+	.login-span{
+		text-align: center;
+		padding-bottom: 15px;
+	}
+	.login-span span{
+		font-family: "KaiTi_GB2312";
+		font-weight:bold;
+		font-size: 1em;
+		color:#1E90FF;
+	}
+	.ss{
+		font-family: "KaiTi_GB2312";
+		font-size: 0.8em;
+		color:#808080;
+	}
+	.submit{
+		padding-top:15px;
+		text-align: center;
+	}
+	.sub{
+		background: url(../images/loginoff.png);
+		border: none;
+		outline: none;
+		padding: 0.55em 1.4em 0.6em;
+		cursor: pointer;
+		font-family: 'KaiTi_GB2312';
+		color: white;
+		width:100%;
+		height:33px;
+		font-size: 0.9em;
+		border-radius: 0.3em;
+		-webkit-border-radius: 0.3em;
+		-moz-border-radius: 0.3em;
+		-o-border-radius: 0.3em;
+		transition: 0.5s all;
+		-webkit-transition: 0.5s all;
+		-moz-transition: 0.5s all;
+		-o-transition: 0.5s all;
+		font-weight: 600;
+	}
+	.sub:hover{
+		background: url(../images/loginon.png);
+	}
+	.bot-pic{
+		margin-top:35px;
+		padding-left:25px;
+	}
+	@media (max-width: 1920px){
+		.header-top{
+			position: absolute;
+			top:25%;
+			left:15%;
+		}
+		.header-bottom{
+			position: absolute;
+			top:75%;
+			left:45%;
+		}
+		.pic{
+			position:relative;
+			top:8%;
+			left:21%;
+			float: left;
+		}
+		.picture{
+			width:500px;
+			height:500px;
+		}
+		.login{
+			width:15%;
+			height:60%;
+			position:relative;
+			top:16%;
+			left:30%;
+			background: #fff;
+			padding: 1em 1.7em 2em 1.7em;
+			border-radius: 0.2em;
+			-webkit-border-radius: 0.2em;
+			-o-border-radius: 0.2em;
+			-moz-border-radius: 0.2em;
+			box-shadow: 2px 2px 2px #191970;
+			overflow: hidden;
+		}
+		.login-span{
+			text-align: center;
+			padding-top:25px; 
+		}
+		.textbox{
+			background:url("../images/user.png") no-repeat 5px center;
+			padding: 7px 0px 7px 25px;
+			width: 86%;
+			font-size: 0.6em;
+			margin: 22px 0px;
+			border: 1px solid #666666;
+			color: #666666;
+			font-family: 'Open Sans', sans-serif;
+			font-weight:300;
+			outline:none;
+			border-radius: 0.2em;
+			-webkit-border-radius: 0.2em;
+			-o-border-radius: 0.2em;
+			-moz-border-radius: 0.2em;
+			-webkit-transition: all 0.3s ease-out;
+			-moz-transition: all 0.3s ease-out;
+			-ms-transition: all 0.3s ease-out;
+			-o-transition: all 0.3s ease-out;
+			transition: all 0.3s ease-out;
+		}
+		.password {
+			background:url("../images/password.png") no-repeat 5px center;
+			padding: 7px 0px 7px 25px;
+			width: 86%;
+			font-size: 0.6em;
+			margin: 14px 0px;
+			border: 1px solid #666666;
+			color: #666666;
+			font-family: 'Open Sans', sans-serif;
+			font-weight:300;
+			outline:none;
+			border-radius: 0.2em;
+			-webkit-border-radius: 0.2em;
+			-o-border-radius: 0.2em;
+			-moz-border-radius: 0.2em;
+			-webkit-transition: all 0.3s ease-out;
+			-moz-transition: all 0.3s ease-out;
+			-ms-transition: all 0.3s ease-out;
+			-o-transition: all 0.3s ease-out;
+			transition: all 0.3s ease-out;
+		}
+		.check{
+			margin-top:20px;
+		}
+		.submit{
+			padding-top:35px;
+			text-align: center;
+		}
+		.bot-pic{
+			margin-top:60px;
+			padding-left:20px;
+		}
+		.won{
+			width:180px;
+			height:38px;
+		}
+	}
+	@media (max-width: 1750px){
+		.picture{
+			width:450px;
+			height:450px;
+		}
+		.login{
+			width:15%;
+			height:60%;
+			position:relative;
+			top:16%;
+			left:30%;
+			background: #fff;
+			padding: 1em 1.7em 2em 1.7em;
+			border-radius: 0.2em;
+			-webkit-border-radius: 0.2em;
+			-o-border-radius: 0.2em;
+			-moz-border-radius: 0.2em;
+			box-shadow: 2px 2px 2px #191970;
+			overflow: hidden;
+		}
+		.login-span{
+			text-align: center;
+			padding-top:20px; 
+		}
+		.textbox{
+			background:url("../images/user.png") no-repeat 5px center;
+			padding: 7px 0px 7px 25px;
+			width: 86%;
+			font-size: 0.6em;
+			margin: 20px 0px;
+			border: 1px solid #666666;
+			color: #666666;
+			font-family: 'Open Sans', sans-serif;
+			font-weight:300;
+			outline:none;
+			border-radius: 0.2em;
+			-webkit-border-radius: 0.2em;
+			-o-border-radius: 0.2em;
+			-moz-border-radius: 0.2em;
+			-webkit-transition: all 0.3s ease-out;
+			-moz-transition: all 0.3s ease-out;
+			-ms-transition: all 0.3s ease-out;
+			-o-transition: all 0.3s ease-out;
+			transition: all 0.3s ease-out;
+		}
+		.password {
+			background:url("../images/password.png") no-repeat 5px center;
+			padding: 7px 0px 7px 25px;
+			width: 86%;
+			font-size: 0.6em;
+			margin: 12px 0px;
+			border: 1px solid #666666;
+			color: #666666;
+			font-family: 'Open Sans', sans-serif;
+			font-weight:300;
+			outline:none;
+			border-radius: 0.2em;
+			-webkit-border-radius: 0.2em;
+			-o-border-radius: 0.2em;
+			-moz-border-radius: 0.2em;
+			-webkit-transition: all 0.3s ease-out;
+			-moz-transition: all 0.3s ease-out;
+			-ms-transition: all 0.3s ease-out;
+			-o-transition: all 0.3s ease-out;
+			transition: all 0.3s ease-out;
+		}
+		.check{
+			margin-top:15px;
+		}
+		.submit{
+			padding-top:30px;
+			text-align: center;
+		}
+		.bot-pic{
+			margin-top:50px;
+			padding-left:20px;
+		}
+		.won{
+			width:160px;
+			height:35px;
+		}
+	}
+	@media (max-width: 1550px){
+		.picture{
+			width:400px;
+			height:400px;
+		}
+		.pic{
+			position:relative;
+			top:8%;
+			left:20%;
+			float: left;
+		}
+		.login{
+			width:15%;
+			height:60%;
+			position:relative;
+			top:16%;
+			left:30%;
+			background: #fff;
+			padding: 1em 1.7em 2em 1.7em;
+			border-radius: 0.2em;
+			-webkit-border-radius: 0.2em;
+			-o-border-radius: 0.2em;
+			-moz-border-radius: 0.2em;
+			box-shadow: 2px 2px 2px #191970;
+			overflow: hidden;
+		}
+		.login-span{
+			text-align: center;
+			padding-top:10px; 
+		}
+		.textbox{
+			background:url("../images/user.png") no-repeat 5px center;
+			padding: 7px 0px 7px 25px;
+			width: 86%;
+			font-size: 0.6em;
+			margin: 17px 0px;
+			border: 1px solid #666666;
+			color: #666666;
+			font-family: 'Open Sans', sans-serif;
+			font-weight:300;
+			outline:none;
+			border-radius: 0.2em;
+			-webkit-border-radius: 0.2em;
+			-o-border-radius: 0.2em;
+			-moz-border-radius: 0.2em;
+			-webkit-transition: all 0.3s ease-out;
+			-moz-transition: all 0.3s ease-out;
+			-ms-transition: all 0.3s ease-out;
+			-o-transition: all 0.3s ease-out;
+			transition: all 0.3s ease-out;
+		}
+		.password {
+			background:url("../images/password.png") no-repeat 5px center;
+			padding: 7px 0px 7px 25px;
+			width: 86%;
+			font-size: 0.6em;
+			margin: 11px 0px;
+			border: 1px solid #666666;
+			color: #666666;
+			font-family: 'Open Sans', sans-serif;
+			font-weight:300;
+			outline:none;
+			border-radius: 0.2em;
+			-webkit-border-radius: 0.2em;
+			-o-border-radius: 0.2em;
+			-moz-border-radius: 0.2em;
+			-webkit-transition: all 0.3s ease-out;
+			-moz-transition: all 0.3s ease-out;
+			-ms-transition: all 0.3s ease-out;
+			-o-transition: all 0.3s ease-out;
+			transition: all 0.3s ease-out;
+		}
+		.submit{
+			padding-top:25px;
+			text-align: center;
+		}
+		.bot-pic{
+			margin-top:40px;
+			padding-left:20px;
+		}
+		.won{
+			width:140px;
+			height:32px;
+		}
+	}
+	@media (max-width: 1466px){
+		.header-top{
+			position: absolute;
+			top:23%;
+			left:10%;
+		}
+		.header-bottom{
+			position: absolute;
+			top:75%;
+			left:37%;
+		}
+		.pic{
+			position:relative;
+			top:16%;
+			left:24%;
+			float: left;
+		}
+		.picture{
+			width:350px;
+			height:350px;
+		}
+		.login{
+			width:15%;
+			height:60%;
+			position:relative;
+			top:13%;
+			left:30%;
+			background: #fff;
+			padding: 1em 1.7em 2em 1.7em;
+			border-radius: 0.2em;
+			-webkit-border-radius: 0.2em;
+			-o-border-radius: 0.2em;
+			-moz-border-radius: 0.2em;
+			box-shadow: 2px 2px 2px #191970;
+			overflow: hidden;
+		}
+		.textbox{
+			background:url("../images/user.png") no-repeat 5px center;
+			padding: 7px 0px 7px 25px;
+			width: 86%;
+			font-size: 0.6em;
+			margin: 11px 0px;
+			border: 1px solid #666666;
+			color: #666666;
+			font-family: 'Open Sans', sans-serif;
+			font-weight:300;
+			outline:none;
+			border-radius: 0.2em;
+			-webkit-border-radius: 0.2em;
+			-o-border-radius: 0.2em;
+			-moz-border-radius: 0.2em;
+			-webkit-transition: all 0.3s ease-out;
+			-moz-transition: all 0.3s ease-out;
+			-ms-transition: all 0.3s ease-out;
+			-o-transition: all 0.3s ease-out;
+			transition: all 0.3s ease-out;
+		}
+		.password {
+			background:url("../images/password.png") no-repeat 5px center;
+			padding: 7px 0px 7px 25px;
+			width: 86%;
+			font-size: 0.6em;
+			margin: 11px 0px;
+			border: 1px solid #666666;
+			color: #666666;
+			font-family: 'Open Sans', sans-serif;
+			font-weight:300;
+			outline:none;
+			border-radius: 0.2em;
+			-webkit-border-radius: 0.2em;
+			-o-border-radius: 0.2em;
+			-moz-border-radius: 0.2em;
+			-webkit-transition: all 0.3s ease-out;
+			-moz-transition: all 0.3s ease-out;
+			-ms-transition: all 0.3s ease-out;
+			-o-transition: all 0.3s ease-out;
+			transition: all 0.3s ease-out;
+		}
+		.login-span{
+			text-align: center;
+			padding-bottom: 15px;
+			padding-top:0px;
+		}
+		.submit{
+			padding-top:15px;
+			text-align: center;
+		}
+		.bot-pic{
+			margin-top:35px;
+			padding-left:35px;
+		}
+	}
+	@media (max-width: 1200px){
+		.header-bottom{
+			position: absolute;
+			top:75%;
+			left:25%;
+		}
+		.bot-pic{
+			margin-top:30px;
+			padding-left:22px;
+		}
+		.pic{
+			position:relative;
+			top:16%;
+			left:24%;
+			float: left;
+		}
+		.picture{
+			width:330px;
+			height:330px;
+		}
+		.login{
+			width:16%;
+			height:60%;
+			position:relative;
+			top:13%;
+			left:30%;
+		}
+		.c1{
+			font-family: "Microsoft YaHei";
+			font-size:11px;
+		}
+		.c2{
+			font-family:Arial;
+			font-size:11px;
+		}
+	}
+	@media (max-width: 1050px){
+		.header-bottom{
+			position: absolute;
+			top:75%;
+			left:22%;
+		}
+		.c1{
+			font-family: "Microsoft YaHei";
+			font-size:11px;
+		}
+		.c2{
+			font-family:Arial;
+			font-size:11px;
+		}
+		.picture{
+			width:320px;
+			height:320px;
+		}
+		.pic{
+			position:relative;
+			top:15%;
+			left:23%;
+			float: left;
+		}
+		.login{
+			width:18%;
+			height:60%;
+			position:relative;
+			top:13%;
+			left:28%;
+		}
+		.bot-pic{
+			margin-top:30px;
+			padding-left:30px;
+		}
+		.won{
+			width:120px;
+			height:25px;
+		}
+	}
+	@media (max-width: 928px){
+		.header-bottom{
+			position: absolute;
+			top:75%;
+			left:20%;
+		}
+		.c1{
+			font-family: "Microsoft YaHei";
+			font-size:9px;
+		}
+		.c2{
+			font-family:Arial;
+			font-size:9px;
+		}
+		.picture{
+			width:310px;
+			height:310px;
+		}
+		.pic{
+			position:relative;
+			top:16%;
+			left:18%;
+			float: left;
+		}
+		.login{
+			width:18%;
+			height:60%;
+			position:relative;
+			top:13%;
+			left:23%;
+		}
+		.bot-pic{
+			margin-top:20px;
+			padding-left:25px;
+		}
+		.won{
+			width:113px;
+			height:25px;
+		}
+	}
+	@media (max-width: 880px){
+		.header-bottom{
+			position: absolute;
+			top:75%;
+			left:10%;
+		}
+		.c1{
+			font-family: "Microsoft YaHei";
+			font-size:9px;
+		}
+		.c2{
+			font-family:Arial;
+			font-size:9px;
+		}
+		.picture{
+			width:300px;
+			height:300px;
+		}
+		.pic{
+			position:relative;
+			top:17%;
+			left:17%;
+			float: left;
+		}
+		.login{
+			width:18%;
+			height:60%;
+			position:relative;
+			top:13%;
+			left:24%;
+		}
+		.bot-pic{
+			display:none;
+		}
+	}
+	@media (max-width: 783px){
+		.picture{
+			width:290px;
+			height:290px;
+		}
+		.pic{
+			position:relative;
+			top:17%;
+			left:13%;
+			float: left;
+		}
+		.login{
+			width:20%;
+			height:60%;
+			position:relative;
+			top:13%;
+			left:20%;
+		}
+		.header-bottom{
+			position: absolute;
+			top:75%;
+			left:4%;
+		}
+		.footer span{
+			font-family: "Microsoft YaHei";
+			font-size: 0.9em;
+		}
+		.bot-pic{
+			margin-top:18px;
+			padding-left:0px;
+		}
+		.logo{
+			width:190px;
+			height:20px;
+		}
+		.p1{
+			font-family: "方正报宋_GBK";
+			font-size: 1.7em;
+		}
+		.p2{
+			font-family: "Microsoft YaHei";
+			font-size: 18px;
+		}
+	}
+	
+	@media (max-width: 752px){
+		.login{
+			width:20%;
+			height:60%;
+			position:relative;
+			top:13%;
+			left:17%;
+		}
+		.picture{
+			width:280px;
+			height:280px;
+		}
+		.pic{
+			position:relative;
+			top:18%;
+			left:12%;
+			float: left;
+		}
+		.header-bottom{
+			position: absolute;
+			top:75%;
+			left:1%;
+		}
+		.c1{
+			font-family: "Microsoft YaHei";
+			font-size:5px;
+		}
+		.c2{
+			font-family:Arial;
+			font-size:5px;
+		}
+	}
+	@media (max-width: 700px){
+		.login{
+			width:20%;
+			height:60%;
+			position:relative;
+			top:13%;
+			left:16%;
+		}
+		.picture{
+			width:270px;
+			height:270px;
+		}
+		.pic{
+			position:relative;
+			top:17%;
+			left:11%;
+			float: left;
+		}
+		.header-bottom{
+			display:none;
+		}
+		.won{
+			width:100px;
+			height:25px;
+		}
+		.bot-pic{
+			margin-top:12px;
+			padding-left:0px;
+		}
+	}
+	@media (max-width: 650px){
+		.header-top{
+			text-align: center;
+			margin:0 auto;
+		}
+		.header-bottom{
+			display:none;
+		}
+		.c1{
+			font-family: "Microsoft YaHei";
+			font-size:9px;
+		}
+		.c2{
+			font-family:Arial;
+			font-size:9px;
+		}
+	}
+	@media (max-width: 610px){
+		.pic{
+			display:none;
+		}
+		.con{
+			width:100%;
+			height:73%;
+			background: url("../images/bg.png") no-repeat;
+			margin:0 auto;
+		}
+		.login{
+			margin:0 auto;
+			width:30%;
+			height:65%;
+			left:0;
+		}
+		.won{
+			width:90px;
+			height:22px;
+		}
+		.bot-pic{
+			margin-top:10px;
+			padding-left:0px;
+		}
+	}
+	@media (max-width: 445px){
+		.con{
+			width:100%;
+			height:73%;
+			background: url("../images/bg.png") no-repeat;
+			background-size:100% 100%;
+		}
+		.login{
+			width:40%;
+			height:65%;
+		}
+	}
+	@media (max-width: 390px){
+		.con{
+			width:100%;
+			height:73%;
+			background: url("../images/bg.png") no-repeat;
+		}
+		.header-top{
+			position: absolute;
+			top:23%;
+			left:5%;
+		}
+		.login{
+			width:40%;
+			height:65%;
+		}
+		.logo{
+			width:180px;
+			height:18px;
+		}
+		.p1{
+			font-family: "方正报宋_GBK";
+			font-size: 1.5em;
+		}
+		.p2{
+			font-family: "Microsoft YaHei";
+			font-size: 16px;
+		}
+		.footer span{
+			font-family: "Microsoft YaHei";
+			font-size: 0.8em;
+		}
+	}
+	@media (max-width: 360px){
+		.con{
+			width:100%;
+			height:73%;
+			background: url("../images/bg.png") no-repeat;
+		}
+		.bot-pic{
+			display:none;
+		}
+		.logo{
+			width:160px;
+			height:16px;
+		}
+		.p1{
+			font-family: "方正报宋_GBK";
+			font-size: 1.3em;
+		}
+		.p2{
+			font-family: "Microsoft YaHei";
+			font-size: 15px;
+		}
+		.footer span{
+			font-family: "Microsoft YaHei";
+			font-size: 0.75em;
+		}
+	}
+	@media (max-width: 310px){
+		.con{
+			width:100%;
+			height:73%;
+			background: url("../images/bg.png") no-repeat;
+		}
+		.header-top{
+			position: absolute;
+			top:23%;
+			left:3;
+		}
+		.logo{
+			width:140px;
+			height:16px;
+		}
+		.p1{
+			font-family: "方正报宋_GBK";
+			font-size: 1.2em;
+		}
+		.p2{
+			font-family: "Microsoft YaHei";
+			font-size: 14px;
+		}
+		.footer span{
+			font-family: "Microsoft YaHei";
+			font-size: 0.7em;
+		}
+	}

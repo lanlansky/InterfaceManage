@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lhw.interfaceManage.dao.InterfaceListDao" >
+  <resultMap id="BaseResultMap" type="com.lhw.interfaceManage.entity.InterfaceList" >
+    <id column="Id" property="id" jdbcType="INTEGER" />
+    <result column="Keyword" property="keyword" jdbcType="NVARCHAR" />
+    <result column="Description" property="description" jdbcType="NVARCHAR" />
+    <result column="Url" property="url" jdbcType="NVARCHAR" />
+    <result column="Paras" property="paras" jdbcType="NVARCHAR" />
+    <result column="Remark" property="remark" jdbcType="NCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, Keyword, Description, Url, Paras, Remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from InterfaceList
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAllList" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from InterfaceList
+   
+  </select>
+  
+  
+  
+  <select id="autoCompleteByKeyword" resultMap="BaseResultMap"  parameterType="java.lang.String">
+    select 
+    distinct  Keyword 
+    from InterfaceList
+    where Keyword like '%'+#{keyword}+'%'
+  </select>
+  
+  
+  <select id="selectSomeByKeyword" resultMap="BaseResultMap"  parameterType="java.lang.String">
+   
+    select 
+    <include refid="Base_Column_List" />
+    from InterfaceList
+    where Keyword like '%'+#{keyword}+'%' 
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from InterfaceList
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  
+  <delete id="deleteSomeList" parameterType="java.lang.Integer" >
+     delete from InterfaceList where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+  </delete>
+  <insert id="insert" parameterType="com.lhw.interfaceManage.entity.InterfaceList" >
+    insert into InterfaceList (Id, Keyword, Description, 
+      Url, Paras, Remark)
+    values (#{id,jdbcType=INTEGER}, #{keyword,jdbcType=NVARCHAR}, #{description,jdbcType=NVARCHAR}, 
+      #{url,jdbcType=NVARCHAR}, #{paras,jdbcType=NVARCHAR}, #{remark,jdbcType=NCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lhw.interfaceManage.entity.InterfaceList" useGeneratedKeys="true" keyProperty="id" keyColumn="Id">
+    insert into InterfaceList
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="keyword != null" >
+        Keyword,
+      </if>
+      <if test="description != null" >
+        Description,
+      </if>
+      <if test="url != null" >
+        Url,
+      </if>
+      <if test="paras != null" >
+        Paras,
+      </if>
+      <if test="remark != null" >
+        Remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="keyword != null" >
+        #{keyword,jdbcType=NVARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=NVARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=NVARCHAR},
+      </if>
+      <if test="paras != null" >
+        #{paras,jdbcType=NVARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=NCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lhw.interfaceManage.entity.InterfaceList" >
+    update InterfaceList
+    <set >
+      <if test="keyword != null" >
+        Keyword = #{keyword,jdbcType=NVARCHAR},
+      </if>
+      <if test="description != null" >
+        Description = #{description,jdbcType=NVARCHAR},
+      </if>
+      <if test="url != null" >
+        Url = #{url,jdbcType=NVARCHAR},
+      </if>
+      <if test="paras != null" >
+        Paras = #{paras,jdbcType=NVARCHAR},
+      </if>
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=NCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lhw.interfaceManage.entity.InterfaceList" >
+    update InterfaceList
+    set Keyword = #{keyword,jdbcType=NVARCHAR},
+      Description = #{description,jdbcType=NVARCHAR},
+      Url = #{url,jdbcType=NVARCHAR},
+      Paras = #{paras,jdbcType=NVARCHAR},
+      Remark = #{remark,jdbcType=NCHAR}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
